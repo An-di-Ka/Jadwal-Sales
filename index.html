@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuri Jaya | MM 46</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="logo.webp" type="image/x-icon" />
+
+    <!-- Mengambil font modern dari Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* --- Variabel Warna Light Mode (Default) --- */
+      :root {
+        --primary: #3b82f6;
+        --today-grad-1: #10b981;
+        --today-grad-2: #059669;
+
+        --bg-color: #f1f5f9;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --title-color: #0f172a;
+        --title-shadow: rgba(255, 255, 255, 0.8);
+
+        --border-color: rgba(255, 255, 255, 0.4);
+        --glass-card: rgba(255, 255, 255, 0.6);
+        --glass-header: rgba(230, 245, 249, 0.5);
+        --glass-header-text: #475569;
+        --glass-item: rgba(255, 255, 255, 0.5);
+        --glass-item-hover: rgba(255, 255, 255, 0.8);
+        --glass-item-active: rgba(255, 255, 255, 0.9);
+        --glass-search: rgba(255, 255, 255, 0.7);
+        --glass-search-focus: rgba(255, 255, 255, 0.9);
+
+        --badge-freq-bg: rgba(255, 255, 255, 0.7);
+        --badge-freq-text: #64748b;
+
+        --blob-1: #93c5fd;
+        --blob-2: #a7f3d0;
+
+        --bg-logo: rgba(255, 255, 255, 0.8);
+      }
+
+      /* --- Variabel Warna Dark Mode --- */
+      body.dark-mode {
+        --primary: #60a5fa;
+        --today-grad-1: #059669;
+        --today-grad-2: #047857;
+
+        --bg-color: #0f172a;
+        --text-main: #f8fafc;
+        --text-muted: #cbd5e1;
+        --title-color: #f8fafc;
+        --title-shadow: rgba(0, 0, 0, 0.8);
+
+        --border-color: rgba(255, 255, 255, 0.1);
+        --glass-card: rgba(30, 41, 59, 0.6);
+        --glass-header: rgba(15, 23, 42, 0.7);
+        --glass-header-text: #e2e8f0;
+        --glass-item: rgba(30, 41, 59, 0.5);
+        --glass-item-hover: rgba(51, 65, 85, 0.6);
+        --glass-item-active: rgba(51, 65, 85, 0.9);
+        --glass-search: rgba(30, 41, 59, 0.6);
+        --glass-search-focus: rgba(51, 65, 85, 0.9);
+
+        --badge-freq-bg: rgba(15, 23, 42, 0.5);
+        --badge-freq-text: #94a3b8;
+
+        --blob-1: #1e3a8a;
+        --blob-2: #064e3b;
+
+        --bg-logo: rgba(15, 23, 42, 0.7);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* --- Animasi Background (Blob) --- */
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(60px);
+        z-index: -1;
+        opacity: 0.6;
+        animation: float 10s infinite ease-in-out alternate;
+        transition: background 0.5s ease;
+      }
+
+      body::before {
+        width: 400px;
+        height: 400px;
+        background: var(--blob-1);
+        top: -100px;
+        left: -100px;
+      }
+
+      body::after {
+        width: 350px;
+        height: 350px;
+        background: var(--blob-2);
+        bottom: -50px;
+        right: -50px;
+        animation-delay: -5s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(40px, 60px) scale(1.1);
+        }
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin: 0;
+        color: var(--title-color);
+        text-shadow: 0 2px 10px var(--title-shadow);
+        transition: color 0.3s ease;
+      }
+
+      .theme-toggle {
+        background: var(--glass-card);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.2rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* --- GAYA STICKY UNTUK SEARCH BAR --- */
+      .search-container {
+        margin-bottom: 24px;
+        position: sticky;
+        top: 20px; /* Jarak dari atas layar saat di-scroll */
+        z-index: 10; /* Memastikan kotak pencarian selalu berada di atas kartu jadwal */
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 14px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        background: var(--glass-search);
+        color: var(--text-main);
+        backdrop-filter: blur(
+          16px
+        ); /* Sedikit ditebalkan blurnya agar kartu di bawahnya lebih tersamar */
+        -webkit-backdrop-filter: blur(16px);
+        font-size: 1rem;
+        font-family: inherit;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25); /* Bayangan sedikit ditebalkan agar jelas memisah dari konten bawah */
+      }
+
+      .search-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .search-input:focus {
+        background: var(--glass-search-focus);
+        border-color: var(--primary);
+        box-shadow:
+          0 0 0 3px rgba(59, 130, 246, 0.15),
+          0 4px 25px rgba(0, 0, 0, 0.1);
+      }
+      /* ------------------------------------ */
+
+      .card-day {
+        background: var(--glass-card);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        margin-bottom: 24px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .day-header {
+        background: var(--glass-header);
+        color: var(--glass-header-text);
+        padding: 16px 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .day-header.today {
+        background: linear-gradient(
+          135deg,
+          var(--today-grad-1) 0%,
+          var(--today-grad-2) 100%
+        );
+        color: white;
+        border-bottom: none;
+      }
+
+      .badge-today {
+        background: rgba(255, 255, 255, 0.25);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        backdrop-filter: blur(4px);
+      }
+
+      .sales-list {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .sales-item {
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: var(--glass-item);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .sales-item:hover {
+        border-color: var(--text-muted);
+        background: var(--glass-item-hover);
+      }
+
+      .sales-name {
+        padding: 16px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+      }
+
+      .sales-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .logo-container {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        /*background: rgba(255, 255, 255, 0.8);*/
+        background: var(--bg-logo);
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease;
+      }
+
+      .sales-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .sales-name-text {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--text-main);
+      }
+
+      .sales-freq {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--badge-freq-text);
+        background: var(--badge-freq-bg);
+        padding: 2px 8px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        width: fit-content;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease;
+      }
+
+      .icon-arrow {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+      }
+
+      .sales-item.active {
+        border-color: var(--primary);
+        background: var(--glass-item-active);
+      }
+
+      .sales-item.active .icon-arrow {
+        transform: rotate(180deg);
+        color: var(--primary);
+      }
+
+      .item-list {
+        display: none;
+        padding: 0 16px 16px 70px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .sales-item.active .item-list {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 6px;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-muted);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-container">
+        <h2>Jadwal Sales 📆</h2>
+        <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+          🌙
+        </button>
+      </div>
+
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Cari nama sales atau barang..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div id="app"></div>
+    </div>
+
+    <script>
+      <!--  Toggle Theme -->
+      const themeToggleBtn = document.getElementById("themeToggle");
+      const bodyEl = document.body;
+
+      const currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme === "dark") {
+        bodyEl.classList.add("dark-mode");
+        themeToggleBtn.innerHTML = "☀️";
+      }
+
+      themeToggleBtn.addEventListener("click", () => {
+        bodyEl.classList.toggle("dark-mode");
+        let theme = "light";
+        if (bodyEl.classList.contains("dark-mode")) {
+          theme = "dark";
+          themeToggleBtn.innerHTML = "☀️";
+        } else {
+          themeToggleBtn.innerHTML = "🌙";
+        }
+        localStorage.setItem("theme", theme);
+      });
+      // ------------------------------------->
+
+      const dataJadwal = {
+        Senin: [
+          {
+            nama: "Wings Food",
+            frekuensi: "1 Minggu Sekali",
+            barang: [
+              "Kecap Sedaap",
+              "Mie Sedaap",
+              "Sedaap Cup",
+              "Mie Sukses 2",
+              "Soyumi Gelas",
+              "Eko Mie",
+              "Mie Sedaap Tasty",
+              "Ramen Yes",
+              "Aquaviva",
+              "Ale-Ale",
+              "Olala",
+              "Power F",
+              "Kopi Nongkrong",
+              "Teh Rio",
+              "Javana",
+              "Floridina",
+              "Golda",
+              "Milku",
+              "Isoplus",
+              "Top White",
+              "Top Cappucino",
+              "Top Gula Aren",
+              "Top Toraja",
+              "Mayor",
+              "Top Plus",
+              "Top Kopi Susu",
+              "Pota Bee",
+              "Kris Bee",
+              "Kris Bee Pillow",
+              "Guri Bee",
+              "Japota",
+              "Sedaap Bumbu",
+              "Choco Drink",
+            ],
+          },
+          {
+            nama: "Gemilang",
+            frekuensi: "1 Minggu Sekali",
+            barang: ["Plastik", "Bahan Kue"],
+          },
+          {
+            nama: "Kayu Putih",
+            frekuensi: "2 Minggu Sekali",
+            barang: [
+              "Kayu Putih",
+              "KoolFever",
+              "GPU",
+              "Balseng Lang",
+              "Geliga",
+            ],
+          },
+          {
+            nama: "Kispray",
+            frekuensi: "2 Minggu Sekali",
+            barang: ["Kispray", "Soffel"],
+          },
+          {
+            nama: "BW",
+            frekuensi: "2 Minggu Sekali ",
+            barang: [
+              "Gula Sak",
+              "Gula Kemasan",
+              "Tapioka",
+              "Tepung Beras",
+              "Tepung Ketan",
+              "Pak Tani",
+              "Tawon 900ml",
+              "Tawon 2l",
+              "Tawon Drigen",
+              "Rose Brand Gelas",
+              "Rose Brand 2l",
+              "Sabun Kompas",
+              "Micin A1",
+              "Citrun",
+            ],
+          },
+        ],
+        Selasa: [
+          {
+            nama: "Unilever",
+            frekuensi: "1 Minggu Sekali",
+            barang: [
+              "Bango",
+              "Royco",
+              "Buavita",
+              "Sariwangi",
+              "Sarimurni",
+              "Rinso",
+              "Molto",
+              "Sunlight",
+              "Pepsodent",
+              "Close Up",
+              "Wipol",
+              "Vixal",
+              "Superpell",
+              "Lifebuoy",
+              "Sunsilk",
+              "Clear",
+              "Dove",
+              "Threseme",
+              "Citra",
+              "Glow & Lovely",
+              "Rexona",
+            ],
+          },
+        ],
+        Rabu: [
+          {
+            nama: "Wings Care",
+            frekuensi: "1 Minggu Sekali",
+            barang: [
+              "Boom",
+              "Daia",
+              "Ekonomi",
+              "Soklin",
+              "Mama Lemon",
+              "Sosoft",
+              "Super Soll",
+              "Dangdut",
+              "Wings",
+              "Ciptadent",
+              "Kodomo",
+              "Zinc",
+              "Emeron",
+              "GIV",
+              "Lovely",
+              "Fresh & Natural",
+              "Posh",
+              "Nuvo",
+            ],
+          },
+        ],
+        Kamis: [
+          {
+            nama: "Acong",
+            frekuensi: "1 Minggu Sekali",
+            barang: [
+              "Gula Karung",
+              "Tapioka Sak",
+              "Tepung Beras",
+              "Tepung Ketan",
+              "Pak Tani",
+              "Mila 1kg",
+              "Segitiga Biru",
+              "Kopi Luwak",
+              "Sajiku",
+              "Micin Sasa",
+              "Teh Balab",
+              "Adem Sari Chingku",
+              "Bintang Zero",
+              "M150",
+              "Kratindaeng",
+              "Susu Beruang",
+              "Sprite",
+              "Fanta",
+              "Tiga Sapi",
+              "Frisian Flag",
+              "Teh Pucuk",
+              "Nipis Madu",
+              "Lasegar",
+              "Nutrijel",
+              "Fermipan",
+              "Platik Bango",
+              "Platik PE 55",
+              "Saus Lombok Mas",
+              "Kecap Lombok Mas",
+              "SEMUA BARANG",
+            ],
+          },
+        ],
+        Jumat: [
+          {
+            nama: "Indomarko",
+            frekuensi: "1 Minggu Sekali",
+            barang: [
+              "Indomie",
+              "Intermi",
+              "Sarimi 2",
+              "Supermi",
+              "Pop Mie",
+              "Kecap Indofood",
+              "Refina",
+              "Indomilk",
+              "Racik",
+              "Alang Sari",
+            ],
+          },
+          {
+            nama: "ABC",
+            frekuensi: "2 Minggu Sekali",
+            barang: [
+              "Kecap ABC",
+              "Sambal ABC",
+              "Sarden",
+              "Bihun Yaya",
+              "Susu Jahe 41",
+              "Dettol",
+            ],
+          },
+        ],
+        Sabtu: [
+          {
+            nama: "Lupa",
+            frekuensi: "-",
+            barang: [],
+          },
+        ],
+        Minggu: [
+          {
+            nama: "Bersih-bersih",
+            frekuensi: "-",
+            barang: [],
+          },
+        ],
+      };
+
+      const logoMap = {
+        Lupa: "😁",
+        "Wings Food": "🪽",
+        "Wings Care": "🪽",
+        Gemilang: "✨",
+        Unilever:
+          '<span style="color: #0284c7; font-family: Georgia, serif; font-weight: 800; font-size: 1.4rem;">U</span>',
+        Indomarko: "🍜",
+        Mayora: "☕",
+        "Orang Tua": "👴",
+        Garudafood: "🦅",
+        "Kayu Putih": "🍃",
+        Kispray: "🌸",
+        BW: "🌹 ",
+        Acong: "🌐",
+        ABC: '<span style="font-family: Arial Black, Impact, sans-serif; font-weight: 900; font-size: 1rem; letter-spacing: -2px;"><span style="color: #0284c7;">A</span><span style="color: #da251d;">B</span><span style="color: #0284c7;">C</span></span>',
+        "Bersih-bersih": "🧹",
+      };
+
+      const namaHari = [
+        "Minggu",
+        "Senin",
+        "Selasa",
+        "Rabu",
+        "Kamis",
+        "Jumat",
+        "Sabtu",
+      ];
+
+      const hariIniIndex = new Date().getDay();
+
+      let hariDiurutkan = [];
+
+      for (let i = hariIniIndex; i < 7; i++) hariDiurutkan.push(namaHari[i]);
+
+      // Untuk menampilkan Minggu
+      for (let i = 0; i < hariIniIndex; i++) hariDiurutkan.push(namaHari[i]);
+
+      function toggleSales(element) {
+        element.parentElement.classList.toggle("active");
+      }
+
+      const appDiv = document.getElementById("app");
+      const searchInput = document.getElementById("searchInput");
+
+      function renderJadwal(query = "") {
+        appDiv.innerHTML = "";
+        const kataKunci = query.toLowerCase();
+        let adaHasil = false;
+
+        hariDiurutkan.forEach((hari) => {
+          if (!dataJadwal[hari] || dataJadwal[hari].length === 0) return;
+
+          const dataDisaring = dataJadwal[hari].filter((sales) => {
+            const kecocokanNama = sales.nama.toLowerCase().includes(kataKunci);
+            const kecocokanBarang = sales.barang.some((b) =>
+              b.toLowerCase().includes(kataKunci),
+            );
+            return kecocokanNama || kecocokanBarang;
+          });
+
+          if (dataDisaring.length === 0) return;
+
+          adaHasil = true;
+          const isToday = hari === hariDiurutkan[0];
+          let salesHTML = "";
+
+          dataDisaring.forEach((sales) => {
+            let barangHTML = sales.barang.map((b) => `<li>${b}</li>`).join("");
+            const autoBuka = query.length > 0 ? "active" : "";
+            const logo = logoMap[sales.nama] || "📦";
+
+            salesHTML += `
+              <div class="sales-item ${autoBuka}">
+                <div class="sales-name" onclick="toggleSales(this)">
+                  <div class="sales-title-wrapper">
+                    <div class="logo-container">${logo}</div>
+                    <div class="sales-info">
+                      <span class="sales-name-text">${sales.nama}</span>
+                      <span class="sales-freq">🕒 ${sales.frekuensi}</span>
+                    </div>
+                  </div>
+                  <span class="icon-arrow">▼</span>
+                </div>
+                <div class="item-list">
+                  <ul>${barangHTML}</ul>
+                </div>
+              </div>
+            `;
+          });
+
+          const headerBadge = isToday
+            ? `<span class="badge-today">Hari Ini</span>`
+            : ``;
+
+          appDiv.innerHTML += `
+            <div class="card-day">
+              <div class="day-header ${isToday ? "today" : ""}">
+                <span>${hari}</span>
+                ${headerBadge}
+              </div>
+              <div class="sales-list">${salesHTML}</div>
+            </div>
+          `;
+        });
+
+        if (!adaHasil) {
+          appDiv.innerHTML = `
+            <div class="empty-state">
+              <div style="font-size: 2rem; margin-bottom: 10px;">🔍</div>
+              <div>Tidak menemukan sales atau barang <b>"${query}"</b></div>
+            </div>
+          `;
+        }
+      }
+
+      renderJadwal();
+
+      searchInput.addEventListener("input", (e) => {
+        renderJadwal(e.target.value);
+      });
+    </script>
+  </body>
+</html>
