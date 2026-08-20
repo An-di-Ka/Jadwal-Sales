@@ -276,12 +276,6 @@ const dataJadwal = {
       mulai: "2026/08/11",
       barang: ["Nabati", "Siip", "Ahh", "Nextar", "Rool's"],
     },
-    {
-      nama: "Jordan",
-      frekuensi: 2,
-      mulai: "2026/08/11",
-      barang: [],
-    },
   ],
   Rabu: [
     {
@@ -308,6 +302,67 @@ const dataJadwal = {
         "Posh",
         "Nuvo",
       ],
+    },
+    {
+      nama: "Teh Merak Jago",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: [],
+    },
+    {
+      nama: "Antaka",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: [
+        "Antaka",
+        "Bumbu Desaku",
+        "Mikimoto",
+        "Makaroni Sedani",
+        "Makaroni Marisol",
+        "Coklat Galetto",
+        "Coklat Collata",
+        "Maizena Karung",
+        "Sun Kara",
+        "Mc Lewis",
+      ],
+    },
+    {
+      nama: "Grandia",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: [
+        "Amplop Grandia",
+        "Kertas Nasi",
+        "Kapas",
+        "Korek",
+        "Spons Cuci Piring",
+        "Spons Mandi",
+        "Minyak Urang Aring",
+        "Minyak Kemiri",
+        "Gatsby",
+        "Lem Bakar",
+        "Cutton Buds",
+        "Staples",
+      ],
+    },
+    {
+      nama: "Fajar Laut (ADEN)",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: [
+        "Pop Ice",
+        "Kapal Api",
+        "Fresco",
+        "Good Day",
+        "Permen Espresso",
+        "Coffe Candy",
+      ],
+    },
+    {
+      nama: "Fajar Laurt (RIAN)",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: ["Anlene", "Boneeto"],
     },
     {
       nama: "Jajan Tejo",
@@ -340,7 +395,7 @@ const dataJadwal = {
       ],
     },
     {
-      nama: "Fajar Laut (Rohim)",
+      nama: "Fajar Laut (ROHIM)",
       frekuensi: 2,
       mulai: "2026/08/12",
       barang: [
@@ -433,6 +488,30 @@ const dataJadwal = {
         "Roti Seperti Jordan (Lupa)",
       ],
     },
+    {
+      nama: "Roti Jordan",
+      frekuensi: 2,
+      mulai: "2026/08/20",
+      barang: [],
+    },
+    {
+      nama: "Downy",
+      frekuensi: 2,
+      mulai: "2026/08/20",
+      barang: ["Downy", "Pantene", "Head & Shoulders", "Rejoice", "Gillete"],
+    },
+    {
+      nama: "Mayora Teh Pucuk",
+      frekuensi: 2,
+      mulai: "2026/08/20",
+      barang: [
+        "Teh Pucuk",
+        "Collagena",
+        "Nipis Madu",
+        "Le Mineral",
+        "Tujuh Kurma",
+      ],
+    },
   ],
   Jumat: [
     {
@@ -488,6 +567,11 @@ const dataJadwal = {
 
 const logoMap = {
   Kosong: "😁",
+  "Teh Merak Jago": "🐔",
+  Antaka: "🧄",
+  "Roti Jordan": "🥖",
+  Downy: "👩🏻",
+  "Mayora Teh Pucuk": "🐛",
   "Fajar Lestari": "🧱",
   Paseo: "🧻",
   "Nabati Asli": "🧀",
@@ -561,7 +645,7 @@ const bodyEl = document.body;
 const currentTheme = localStorage.getItem("theme");
 if (currentTheme === "dark") {
   bodyEl.classList.add("dark-mode");
-  themeToggleBtn.innerHTML = "🌞";
+  themeToggleBtn.innerHTML = "☀️";
 }
 
 themeToggleBtn.addEventListener("click", () => {
@@ -569,9 +653,9 @@ themeToggleBtn.addEventListener("click", () => {
   let theme = "light";
   if (bodyEl.classList.contains("dark-mode")) {
     theme = "dark";
-    themeToggleBtn.innerHTML = "🌞";
+    themeToggleBtn.innerHTML = "☀️";
   } else {
-    themeToggleBtn.innerHTML = "🌚";
+    themeToggleBtn.innerHTML = "🌙";
   }
   localStorage.setItem("theme", theme);
 });
