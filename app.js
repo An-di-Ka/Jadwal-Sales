@@ -242,6 +242,12 @@ const dataJadwal = {
       ],
     },
     {
+      nama: "PAL Jajan",
+      frekuensi: 2,
+      mulai: "2026/09/15",
+      barang: ["Chacha Renteng", "Top Delfi", "Kuwaci 500"],
+    },
+    {
       nama: "Kenduri",
       frekuensi: 2,
       mulai: "2026/08/11",
@@ -625,6 +631,15 @@ const logoMap = {
     PAL
   </span>`,
   "PAL Parfum": `
+  <span style="
+      font-family: Arial Black, Impact, sans-serif;
+      color: #da251d;
+      font-size: 1rem;
+      font-style: italic;">
+    PAL
+  </span>`,
+
+  "PAL Jajan": `
   <span style="
       font-family: Arial Black, Impact, sans-serif;
       color: #da251d;
