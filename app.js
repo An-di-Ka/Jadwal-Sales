@@ -74,16 +74,7 @@ const dataJadwal = {
         "Balon",
       ],
     },
-    {
-      nama: "Roti Surya",
-      frekuensi: 2,
-      mulai: "2026/08/03",
-      barang: [
-        "Roti Surya Kacang Hijau",
-        "Roti Surya Coklat",
-        "Roti Surya Kelapa",
-      ],
-    },
+
     {
       nama: "BW",
       frekuensi: 2,
@@ -351,36 +342,12 @@ const dataJadwal = {
         "Staples",
       ],
     },
-    {
-      nama: "Fajar Laut (ADEN)",
-      frekuensi: 2,
-      mulai: "2026/08/19",
-      barang: [
-        "Pop Ice",
-        "Kapal Api",
-        "Fresco",
-        "Good Day",
-        "Permen Espresso",
-        "Coffe Candy",
-      ],
-    },
-    {
-      nama: "Fajar Laurt (RIAN)",
-      frekuensi: 2,
-      mulai: "2026/08/19",
-      barang: ["Anlene", "Boneeto"],
-    },
+
     {
       nama: "Jajan Tejo",
       frekuensi: 2,
       mulai: "2026/08/05",
       barang: ["Kerupuk Cincin", "Roti Seven", "Kacang Telor", "Kacang Bawang"],
-    },
-    {
-      nama: "Monas",
-      frekuensi: 2,
-      mulai: "2026/08/05",
-      barang: ["Monas", "Soun"],
     },
     {
       nama: "Dua Kelinci",
@@ -398,6 +365,22 @@ const dataJadwal = {
         "Minyak Rizky",
         "Pilus 500",
         "Sukro",
+      ],
+    },
+    {
+      nama: "Garuda",
+      frekuensi: 2,
+      mulai: "2026/10/21",
+      barang: ["Chocolatos", "Gery Salut", "Garuda Rosta"],
+    },
+    {
+      nama: "Roti Surya",
+      frekuensi: 2,
+      mulai: "2026/10/21",
+      barang: [
+        "Roti Surya Kacang Hijau",
+        "Roti Surya Coklat",
+        "Roti Surya Kelapa",
       ],
     },
     {
@@ -426,6 +409,25 @@ const dataJadwal = {
         "Permen Super Zuper",
         "Sosis Sonice",
       ],
+    },
+    {
+      nama: "Fajar Laut (ADEN)",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: [
+        "Pop Ice",
+        "Kapal Api",
+        "Fresco",
+        "Good Day",
+        "Permen Espresso",
+        "Coffe Candy",
+      ],
+    },
+    {
+      nama: "Fajar Laurt (RIAN)",
+      frekuensi: 2,
+      mulai: "2026/08/19",
+      barang: ["Anlene", "Boneeto"],
     },
   ],
   Kamis: [
@@ -573,6 +575,7 @@ const dataJadwal = {
 
 const logoMap = {
   Kosong: "😁",
+  Garuda: "🦅",
   "Teh Merak Jago": "🐔",
   Antaka: "🧄",
   "Roti Jordan": "🥖",
@@ -814,7 +817,7 @@ searchInput.addEventListener("input", (e) => {
 
   timerPencarian = setTimeout(() => {
     renderJadwal(e.target.value);
-  }, 500);
+  }, 750);
 });
 
 // Klik Sales u/ buka barang
