@@ -496,16 +496,11 @@ const dataJadwal = {
         "Roti Seperti Jordan (Lupa)",
       ],
     },
-    {
-      nama: "Roti Jordan",
-      frekuensi: 2,
-      mulai: "2026/08/20",
-      barang: [],
-    },
+
     {
       nama: "Downy",
       frekuensi: 2,
-      mulai: "2026/08/20",
+      mulai: "2026/11/05",
       barang: ["Downy", "Pantene", "Head & Shoulders", "Rejoice", "Gillete"],
     },
     {
@@ -557,10 +552,10 @@ const dataJadwal = {
   ],
   Sabtu: [
     {
-      nama: "Kosong",
-      frekuensi: 1,
-      mulai: "2026/08/15",
-      barang: ["Jika stok timbangan aman, bawang putih sudah bersih. Maka..."],
+      nama: "Roti Jordan",
+      frekuensi: 2,
+      mulai: "2026/11/04",
+      barang: [],
     },
   ],
   Minggu: [
