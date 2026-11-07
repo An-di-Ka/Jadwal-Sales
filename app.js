@@ -554,7 +554,7 @@ const dataJadwal = {
     {
       nama: "Roti Jordan",
       frekuensi: 2,
-      mulai: "2026/11/04",
+      mulai: "2026/11/07",
       barang: [],
     },
   ],
