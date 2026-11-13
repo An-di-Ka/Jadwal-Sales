@@ -469,19 +469,7 @@ const dataJadwal = {
         "Tolak Angin (PENTING)",
       ],
     },
-    {
-      nama: "Mayora Energen",
-      frekuensi: 2,
-      mulai: "2026/08/13",
-      barang: [
-        "Energen",
-        "Super Bubur",
-        "Tora Bika",
-        "Migelas",
-        "Champion",
-        "Beng-Beng Drink",
-      ],
-    },
+
     {
       nama: "Fajar Lestari",
       frekuensi: 2,
@@ -534,6 +522,7 @@ const dataJadwal = {
         "Alang Sari",
       ],
     },
+
     {
       nama: "ABC",
       frekuensi: 2,
@@ -551,6 +540,19 @@ const dataJadwal = {
     },
   ],
   Sabtu: [
+    {
+      nama: "Mayora Energen",
+      frekuensi: 2,
+      mulai: "2026/11/14",
+      barang: [
+        "Energen",
+        "Super Bubur",
+        "Tora Bika",
+        "Migelas",
+        "Champion",
+        "Beng-Beng Drink",
+      ],
+    },
     {
       nama: "Roti Jordan",
       frekuensi: 2,
@@ -740,7 +742,7 @@ function renderJadwal(query = "") {
 
       let jadwalMulaiHariIni = "";
       if (formatTanggal(jadwalMulai) == formatTanggal(hariIni)) {
-        jadwalMulaiHariIni = "Hari Ini";
+        jadwalMulaiHariIni = "<span class='today'>Hari Ini</span>";
       } else {
         jadwalMulaiHariIni = formatTanggal(jadwalMulai);
       }
@@ -762,8 +764,8 @@ function renderJadwal(query = "") {
             <div class="sales-name">${sales.nama}</div>
             <div class="sales-frecuency">${sales.frekuensi} Minggu Sekali</div>
             <div class="sales-schedule">
-              <span class="start">🕒 ${jadwalMulaiHariIni}</span> -
-              <span class="end">${formatTanggal(jadwalBesok)}</span></div>
+              <span class="start-day">🕒 ${jadwalMulaiHariIni}</span> -
+              <span class="end-day">${formatTanggal(jadwalBesok)}</span></div>
           </div>
           <span class="sales-arrow">▼</span>
         </div>
